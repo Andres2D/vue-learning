@@ -11,7 +11,7 @@
   <div id="app">
     <ul>
       <li v-for="character in characters">
-        {{ character }}
+        {{ character.name }} ({{ character.state }})
       </li>
     </ul>
   </div>
@@ -22,10 +22,22 @@
       data() {
         return {
           characters: [
-            'Barry',
-            'Noho Hank',
-            'The raven',
-            'Gene'
+            {
+              name: 'Barry',
+              state: 'Death'
+            },
+            {
+              name: 'Noho Hank',
+              state: 'Death'
+            },
+            {
+              name: 'The raven',
+              state: 'Alive'
+            },
+            {
+              name: 'Gene',
+              state: 'Alive'
+            }
           ]
         }
       }
