@@ -1,3 +1,3 @@
 ## Vue learning
 
-01 - CDN example
+01 - [`./cdn-example`] CDN example
