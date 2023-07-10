@@ -7,9 +7,10 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>CDN test</h1>
+  <h1>Barry</h1>
   <div id="app">
-    <ul>
+    <p v-if="characters.length === 0">There are no characters</p>
+    <ul v-else>
       <li v-for="character in characters">
         {{ character.name }} ({{ character.state }})
       </li>
@@ -19,7 +20,7 @@
   <script>
     const { createApp } = Vue;
     const app = createApp({
-      data() {
+      data: () => {
         return {
           characters: [
             {
