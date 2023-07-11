@@ -10,16 +10,15 @@
   <h1>Barry</h1>
   <div id="app">
     <p v-if="characters.length === 0">There are no characters</p>
-    <ul v-else-if="characters.length % 2 === 0">
-      <p>Even characters</p>
-      <li v-for="character in characters">
-        {{ character.name }} ({{ character.state }})
-      </li>
-    </ul>
     <ul v-else>
-      <p>Odd characters</p>
-      <li v-for="character in characters">
-        {{ character.name }} ({{ character.state }})
+      <li v-for="(character, index) in characters.filter(char => char.favorite)">
+        {{index+1}}] {{ character.name }} ({{ character.state }})
+        <button @click="addRemoveFavorite(character.id)">⬇️</button>
+      </li>
+      <hr />
+      <li v-for="(character, index) in characters.filter(char => !char.favorite)">
+        {{index+1}}] {{ character.name }} ({{ character.state }})
+        <button @click="addRemoveFavorite(character.id)">🔥</button>
       </li>
     </ul>
   </div>
@@ -31,26 +30,36 @@
         return {
           characters: [
             {
+              id: 1,
               name: 'Barry',
-              state: 'Death'
+              state: 'Death',
+              favorite: false
             },
             {
+              id: 2,
               name: 'Noho Hank',
-              state: 'Death'
+              state: 'Death',
+              favorite: false
             },
             {
+              id: 3,
               name: 'The raven',
-              state: 'Alive'
+              state: 'Alive',
+              favorite: false
             },
             {
+              id: 4,
               name: 'Gene',
-              state: 'Alive'
-            },
-            {
-              name: 'The elders',
-              state: 'Alive'
+              state: 'Alive',
+              favorite: false
             }
           ]
+        }
+      },
+      methods: {
+        addRemoveFavorite(id) {
+          this.characters[this.characters.findIndex(char => char.id === id)].favorite = 
+          !this.characters[this.characters.findIndex(char => char.id === id)].favorite;
         }
       }
     });
