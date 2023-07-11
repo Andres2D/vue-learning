@@ -15,11 +15,32 @@
         {{index+1}}] {{ character.name }} ({{ character.state }})
         <button @click="addRemoveFavorite(character.id)">⬇️</button>
       </li>
+      
       <hr />
+      
       <li v-for="(character, index) in characters.filter(char => !char.favorite)">
         {{index+1}}] {{ character.name }} ({{ character.state }})
         <button @click="addRemoveFavorite(character.id)">🔥</button>
       </li>
+
+      <hr />
+
+      <form>
+        <label>Character name</label>
+        <input v-model="newCharacterName" type="text" />
+        <br>
+        <label>State</label>
+        <select v-model="newState">
+          <option value="Death">Death</option>
+          <option value="Alive">Alive</option>
+        </select>
+        <br>
+        <label>Favorite</label>
+        <input v-model="newCharacterFavorite" type="checkbox" />
+        <br>
+        <button type="button" @click="addNewCharacter">Save</button>
+      </form>
+
     </ul>
   </div>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -28,6 +49,9 @@
     const app = createApp({
       data: () => {
         return {
+          newCharacterName: '',
+          newCharacterFavorite: false,
+          newCharacterState: 'Alive',
           characters: [
             {
               id: 1,
@@ -60,6 +84,18 @@
         addRemoveFavorite(id) {
           this.characters[this.characters.findIndex(char => char.id === id)].favorite = 
           !this.characters[this.characters.findIndex(char => char.id === id)].favorite;
+        },
+        addNewCharacter(event) {
+          event.preventDefault();
+          const newCharacter = {
+            id: this.characters[this.characters.length - 1] + 1,
+            name: this.newCharacterName,
+            favorite: this.newCharacterFavorite,
+            state: this.newCharacterState
+          };
+          this.characters.push(newCharacter);
+          this.newCharacterName = '';
+          this.newCharacterFavorite = false
         }
       }
     });
