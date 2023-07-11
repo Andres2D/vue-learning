@@ -27,16 +27,16 @@
 
       <form>
         <label>Character name</label>
-        <input v-model="newCharacterName" type="text" />
+        <input v-model="newCharacter.name" type="text" />
         <br>
         <label>State</label>
-        <select v-model="newState">
+        <select v-model="newCharacter.state">
           <option value="Death">Death</option>
           <option value="Alive">Alive</option>
         </select>
         <br>
         <label>Favorite</label>
-        <input v-model="newCharacterFavorite" type="checkbox" />
+        <input v-model="newCharacter.favorite" type="checkbox" />
         <br>
         <button type="button" @click="addNewCharacter">Save</button>
       </form>
@@ -49,9 +49,11 @@
     const app = createApp({
       data: () => {
         return {
-          newCharacterName: '',
-          newCharacterFavorite: false,
-          newCharacterState: 'Alive',
+          newCharacter: {
+            name: '',
+            favorite: false,
+            state: 'Alive',
+          },
           characters: [
             {
               id: 1,
@@ -87,15 +89,16 @@
         },
         addNewCharacter(event) {
           event.preventDefault();
-          const newCharacter = {
-            id: this.characters[this.characters.length - 1] + 1,
-            name: this.newCharacterName,
-            favorite: this.newCharacterFavorite,
-            state: this.newCharacterState
+          const newCharacterObject = {
+            ...this.newCharacter,
+            id: this.characters[this.characters.length - 1] + 1
           };
-          this.characters.push(newCharacter);
-          this.newCharacterName = '';
-          this.newCharacterFavorite = false
+          this.characters.push(newCharacterObject);
+          this.newCharacter = {
+            name: '',
+            favorite: false,
+            state: 'Alive',
+          }
         }
       }
     });
