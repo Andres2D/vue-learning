@@ -35,11 +35,21 @@
           <option value="Alive">Alive</option>
         </select>
         <br>
+        <label>Stars</label>
+        <input v-model="newCharacter.stars" type="number" />
+        <br>
         <label>Favorite</label>
         <input v-model="newCharacter.favorite" type="checkbox" />
         <br>
         <button type="button" @click="addNewCharacter">Save</button>
       </form>
+
+      <hr />
+
+      <h2>Death characters: {{ deathCharacterPercentage }}</h2>
+      <h2>Alive characters: {{ aliveCharacterPercentage }}</h2>
+
+      <h2>Average characters stars: {{ averageStars }}</h2>
 
     </ul>
   </div>
@@ -53,33 +63,53 @@
             name: '',
             favorite: false,
             state: 'Alive',
+            stars: 0
           },
           characters: [
             {
               id: 1,
               name: 'Barry',
               state: 'Death',
-              favorite: false
+              favorite: false,
+              stars: 5
             },
             {
               id: 2,
               name: 'Noho Hank',
               state: 'Death',
-              favorite: false
+              favorite: false,
+              stars: 4
             },
             {
               id: 3,
               name: 'The raven',
               state: 'Alive',
-              favorite: false
+              favorite: false,
+              stars: 4
             },
             {
               id: 4,
               name: 'Gene',
               state: 'Alive',
-              favorite: false
+              favorite: false,
+              stars: 4
             }
           ]
+        }
+      },
+      computed: {
+        deathCharacterPercentage() {
+          return `${
+            (this.characters.filter(char => char.state === 'Death').length / this.characters.length) * 100
+          }%`;
+        },
+        aliveCharacterPercentage() {
+          return `${
+            (this.characters.filter(char => char.state === 'Alive').length / this.characters.length) * 100
+          }%`;
+        },
+        averageStars() {
+          return Math.floor(this.characters.map(char => char.stars).reduce((a,b) => a+b) / this.characters.length);
         }
       },
       methods: {
