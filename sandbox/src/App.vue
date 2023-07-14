@@ -1,47 +1,71 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+<script>
+export default {
+  data() {
+    return {
+      count: 0,
+      counterTitle: 'Counter Standard',
+      incrementAmount: 7,
+      message: 'Hello it works',
+      listOfNumbers: [1, 2, 3, 4, 5],
+    };
+  },
+  computed: {
+    displayTitle() {
+      if (this.count > 21) {
+        return 'Counter Standard - Very Long';
+      } else {
+        return 'Counter Standard';
+      }
+    },
+    optimizedIncrementAmount() {
+      return this.displayTitle.length * this.incrementAmount;
+    },
+  },
+  methods: {
+    incrementCount(newAmount, event) {
+      // console.log(newAmount);
+      // console.log(event);
+      this.count += this.optimizedIncrementAmount;
+    },
+    // changeIncrementAmount(event) {
+    //   console.log(event);
+    //   this.incrementAmount = +event.target.value;
+    // }
+  },
+  watch: {
+    count(newValue) {
+      if (newValue > 20) {
+        this.counterTitle += ' Very long';
+      }
+    },
+  },
+}
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <h1>test</h1>
+  <div id="app">
+    <p v-if="message.length % 2 === 0">Even: {{ message.toUpperCase() }}</p>
+    <p v-else>Odd: {{ message }}</p>
+    <ul>
+      <li v-for="(number, index) in listOfNumbers" :key="`item-${index}`">{{ number }}</li>
+    </ul>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+    <hr />
+
+    <h1>{{ displayTitle }}</h1>
+    <p>{{ count }}</p>
+    <p>{{ optimizedIncrementAmount }}</p>
+    <button @click="incrementCount(10, $event)">Increment Count</button>
+    <!-- v-on:click="incrementCount(10, $event)"  -->
+    <!-- v-on:click="(event) => incrementCount(10, event)"  -->
+    <!-- v-on:click="incrementCount(10)"  -->
+
+    <div>
+      <label for="incrementamount">Increment by:</label>
+      <input type="number" v-model="incrementAmount" />
+      <!-- v-bind:value="incrementAmount" 
+          v-on:input="changeIncrementAmount" -->
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  </div>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
