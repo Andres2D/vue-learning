@@ -1,5 +1,9 @@
 <script>
+import BenderStatistics from './components/BenderStatistics.vue'
   export default {
+    components: {
+      BenderStatistics
+    },
     data() {
       return {
         newCharacter: {
@@ -38,25 +42,6 @@
             stars: 4
           }
         ]
-      }
-    },
-    computed: {
-      deathCharacterPercentage() {
-        return `${
-          (this.characters.filter((char) => char.state === 'Death').length / this.characters.length) *
-          100
-        }%`
-      },
-      aliveCharacterPercentage() {
-        return `${
-          (this.characters.filter((char) => char.state === 'Alive').length / this.characters.length) *
-          100
-        }%`
-      },
-      averageStars() {
-        return Math.floor(
-          this.characters.map((char) => char.stars).reduce((a, b) => a + b) / this.characters.length
-        )
       }
     },
     methods: {
@@ -122,10 +107,8 @@
 
     <hr />
 
-    <h2>Death characters: {{ deathCharacterPercentage }}</h2>
-    <h2>Alive characters: {{ aliveCharacterPercentage }}</h2>
-
-    <h2>Average characters stars: {{ averageStars }}</h2>
+    <BenderStatistics />
+    
   </ul>
 </template>
 
