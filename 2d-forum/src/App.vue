@@ -107,7 +107,7 @@ import BenderStatistics from './components/BenderStatistics.vue'
 
     <hr />
 
-    <BenderStatistics />
+    <BenderStatistics :characters="characters" />
     
   </ul>
 </template>

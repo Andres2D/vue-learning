@@ -1,5 +1,11 @@
 <script>
   export default {
+    props: {
+      characters: {
+        type: Array,
+        required: true
+      }
+    }, 
     computed: {
       deathCharacterPercentage() {
         return `${
