@@ -82,6 +82,7 @@
 </script>
 
 <template>
+  <h1>Stats</h1>
   <p v-if="characters.length === 0">There are no characters</p>
   <ul v-else>
     <li v-for="(character, index) in characters.filter((char) => char.favorite)" 
