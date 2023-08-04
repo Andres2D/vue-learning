@@ -41,13 +41,13 @@ export default {
 
 <template>
   <BaseLayout>
-    <template v-slot:sidebar>
+    <template #sidebar>
       Sidebar
     </template>
-    <template v-slot:main> 
+    <template #main> 
       Main content
     </template>
-    <template v-slot:footer> 
+    <template #footer> 
       Footer content
     </template>
   </BaseLayout>
