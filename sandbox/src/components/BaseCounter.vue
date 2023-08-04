@@ -19,14 +19,8 @@ export default {
   },
   methods: {
     incrementCount(newAmount, event) {
-      // console.log(newAmount);
-      // console.log(event);
       this.count += this.optimizedIncrementAmount;
     },
-    // changeIncrementAmount(event) {
-    //   console.log(event);
-    //   this.incrementAmount = +event.target.value;
-    // }
   }
 }
 </script>
@@ -36,14 +30,9 @@ export default {
   <p>{{ count }}</p>
   <p>{{ optimizedIncrementAmount }}</p>
   <button @click="incrementCount(10, $event)">Increment Count</button>
-  <!-- v-on:click="incrementCount(10, $event)"  -->
-  <!-- v-on:click="(event) => incrementCount(10, event)"  -->
-  <!-- v-on:click="incrementCount(10)"  -->
 
   <div>
     <label for="incrementamount">Increment by:</label>
     <input type="number" v-model="incrementAmount" />
-    <!-- v-bind:value="incrementAmount" 
-          v-on:input="changeIncrementAmount" -->
   </div>
 </template>
