@@ -1,8 +1,10 @@
 <script>
-import BenderStatistics from './components/BenderStatistics.vue'
+import BenderStatistics from './components/BenderStatistics.vue';
+import CharacterCard from './components/CharacterCard.vue';
   export default {
     components: {
-      BenderStatistics
+      BenderStatistics,
+      CharacterCard
     },
     data() {
       return {
@@ -45,9 +47,9 @@ import BenderStatistics from './components/BenderStatistics.vue'
       }
     },
     methods: {
-      addRemoveFavorite(id) {
-        this.characters[this.characters.findIndex((char) => char.id === id)].favorite =
-          !this.characters[this.characters.findIndex((char) => char.id === id)].favorite
+      addRemoveFavorite(payload) {
+        this.characters[this.characters.findIndex((char) => char.id === payload)].favorite =
+          !this.characters[this.characters.findIndex((char) => char.id === payload)].favorite
       },
       addNewCharacter(event) {
         event.preventDefault()
@@ -72,16 +74,26 @@ import BenderStatistics from './components/BenderStatistics.vue'
   <ul v-else>
     <li v-for="(character, index) in characters.filter((char) => char.favorite)" 
       :key="`character-${index}`">
-      {{ index + 1 }}] {{ character.name }} ({{ character.state }})
-      <button @click="addRemoveFavorite(character.id)">⬇️</button>
+      <CharacterCard 
+        :character="character" 
+        :favorite="true" 
+        :index="index" 
+        @add-remove-favorite="addRemoveFavorite"
+      />
     </li>
 
     <hr />
 
     <li v-for="(character, index) in characters.filter((char) => !char.favorite)"
       :key="`character-${index}`">
-      {{ index + 1 }}] {{ character.name }} ({{ character.state }})
-      <button @click="addRemoveFavorite(character.id)">🔥</button>
+      <CharacterCard 
+        :character="character" 
+        :favorite="false" 
+        :index="index" 
+        @add-remove-favorite="addRemoveFavorite"
+      />
+      <!-- {{ index + 1 }}] {{ character.name }} ({{ character.state }})
+      <button @click="addRemoveFavorite(character.id)">🔥</button> -->
     </li>
 
     <hr />
