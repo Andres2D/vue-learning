@@ -1,11 +1,13 @@
 <script>
 import BaseCounter from './components/BaseCounter.vue';
-import UserCard from './components/UserCard.vue'
+import UserCard from './components/UserCard.vue';
+import BaseButton from './components/BaseButton.vue';
 
 export default {
   components: {
     BaseCounter,
-    UserCard
+    UserCard,
+    BaseButton
   },
   data() {
     return {
@@ -36,6 +38,9 @@ export default {
 </script>
 
 <template>
+  <BaseButton>
+    Arrow Left - Hello
+  </BaseButton>
   <UserCard :user="defineUserData" @change-name="changeName"/>
   <BaseCounter />
   <!-- <base-counter /> -->
