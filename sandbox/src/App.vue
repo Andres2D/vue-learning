@@ -2,12 +2,14 @@
 import BaseCounter from './components/BaseCounter.vue';
 import UserCard from './components/UserCard.vue';
 import BaseButton from './components/BaseButton.vue';
+import BaseLayout from './components/BaseLayout.vue';
 
 export default {
   components: {
     BaseCounter,
     UserCard,
-    BaseButton
+    BaseButton,
+    BaseLayout
   },
   data() {
     return {
@@ -38,6 +40,17 @@ export default {
 </script>
 
 <template>
+  <BaseLayout>
+    <template v-slot:sidebar>
+      Sidebar
+    </template>
+    <template v-slot:main> 
+      Main content
+    </template>
+    <template v-slot:footer> 
+      Footer content
+    </template>
+  </BaseLayout>
   <BaseButton :left="true"></BaseButton>
   <UserCard :user="defineUserData" @change-name="changeName"/>
   <BaseCounter />
