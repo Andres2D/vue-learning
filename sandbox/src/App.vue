@@ -19,11 +19,19 @@ export default {
       }
     };
   },
+  computed: {
+    defineUserData() {
+      return {
+        name: this.userData.name,
+        food: this.userData.food
+      }
+    }
+  }
 };
 </script>
 
 <template>
-  <UserCard :name="userData.name" :food="userData.food"/>
+  <UserCard :user="defineUserData"/>
   <BaseCounter />
   <!-- <base-counter /> -->
   <h1>test</h1>
