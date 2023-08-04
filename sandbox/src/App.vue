@@ -38,9 +38,7 @@ export default {
 </script>
 
 <template>
-  <BaseButton>
-    Arrow Left - Hello
-  </BaseButton>
+  <BaseButton :left="true"></BaseButton>
   <UserCard :user="defineUserData" @change-name="changeName"/>
   <BaseCounter />
   <!-- <base-counter /> -->
