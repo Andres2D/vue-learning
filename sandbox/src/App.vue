@@ -26,12 +26,17 @@ export default {
         food: this.userData.food
       }
     }
+  },
+  methods: {
+    changeName() {
+      this.userData.name = 'Charlie'
+    }
   }
 };
 </script>
 
 <template>
-  <UserCard :user="defineUserData"/>
+  <UserCard :user="defineUserData" @change-name="changeName"/>
   <BaseCounter />
   <!-- <base-counter /> -->
   <h1>test</h1>
