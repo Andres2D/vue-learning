@@ -20,7 +20,7 @@ export default {
 <template>
   <main>
     <ul>
-      <li v-for="user in usersList" :key="user.id">
+      <li v-for="user in usersList" :key="`user-${user.id}`">
         <div class="user-header">
           <h3>{{ user.name }}</h3>
           <p>({{ user.username }})</p>
