@@ -1,6 +1,15 @@
 <script setup>
 import BaseButton from './BaseButton.vue';
-import { computed, ref, reactive } from 'vue';
+import { computed, ref, reactive, defineProps, defineEmits } from 'vue';
+
+const emits = defineEmits(['change-region']); 
+
+const props = defineProps({
+  region: {
+    type: String,
+    default: 'Kanto'
+  }
+});
 
 const regionName = ref('Kanto');
 
@@ -8,7 +17,7 @@ const state = reactive({
   elementType: 'lighting'
 });
 
-const regionNameAllCaps = computed(() => state.elementType.toUpperCase());
+const regionNameAllCaps = computed(() => state.elementType.toUpperCase() + props.region);
 const pokedex = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
   .then(response => response.json());
 
