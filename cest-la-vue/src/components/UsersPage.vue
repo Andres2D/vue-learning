@@ -1,19 +1,13 @@
 <script>
 const baseUrl = "https://jsonplaceholder.typicode.com";
 export default {
-  data: () => ({
-    usersList: [],
-  }),
-  methods: {
-    async fetchUsers() {
-      this.usersList = await fetch(`${baseUrl}/users`).then((response) =>
-        response.json()
-      );
-    },
+  async setup() {
+    const usersList = await fetch(`${baseUrl}/users`).then((response) => response.json());
+    return {
+      usersList
+    };
   },
-  created() {
-    this.fetchUsers();
-  },
+  data: () => ({}),
 };
 </script>
 
