@@ -1,13 +1,20 @@
 <script>
-import { computed, ref } from 'vue';
+import { computed, ref, reactive } from 'vue';
 
 export default {
   async setup() {
     const regionName = ref('Kanto');
+
+    const state = reactive({
+      elementType: 'lighting'
+    });
+
     console.log(regionName);
-    const regionNameAllCaps = computed(() => regionName.value.toUpperCase());
+    const regionNameAllCaps = computed(() => state.elementType.toUpperCase());
     const pokedex = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
       .then(response => response.json());
+    
+    console.log(state);
     
     return {
       regionName,
