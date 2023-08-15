@@ -1,27 +1,33 @@
-<script>
+<script setup>
 import { reactive } from 'vue';
 
-const baseUrl = "https://jsonplaceholder.typicode.com";
-export default {
-  async setup() {
-    const state = reactive({ usersList: [] });
-
-    const fetchUsers = async () => {
-      const response = await fetch(`${baseUrl}/users`).then((response) =>
-        response.json()
-      );
-      return response;
-    };
-
-    state.usersList = await fetchUsers();
-
-    return { state };
+defineProps({
+  title: {
+    type: String,
+    default: 'Users'
   },
+});
+
+defineEmits(['update-user-list']);
+
+const baseUrl = "https://jsonplaceholder.typicode.com";
+
+const state = reactive({ usersList: [] });
+
+const fetchUsers = async () => {
+  const response = await fetch(`${baseUrl}/users`).then((response) =>
+    response.json()
+  );
+  return response;
 };
+
+state.usersList = await fetchUsers();
+
 </script>
 
 <template>
   <main>
+    <h2>{{ title }}</h2>
     <ul>
       <li v-for="user in state.usersList" :key="`user-${user.id}`">
         <div class="user-header">
