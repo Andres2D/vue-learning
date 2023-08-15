@@ -20,11 +20,12 @@ export default {
   <h2>{{ newCounter }}</h2>
   <h1>User: {{user.name}}</h1>
   <p>Food: {{user.food}}</p>
-  <button @click="$emit('change-name')">Change name</button>
+  <button :class="$style.button"  @click="$emit('change-name')">Change name</button>
 </template>
 
-<style scoped>
-button {
+<style module>
+/* lang="scss" --> configure scss before */
+.button {
   border: 10px solid green;
 }
 </style>
