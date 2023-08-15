@@ -1,7 +1,4 @@
 <script>
-import HomePage from "./components/HomePage.vue";
-import LoginPage from "./components/LoginPage.vue";
-import UsersPage from "./components/UsersPage.vue";
 import { visitors } from './composables/useState';
 
 export default {
@@ -9,31 +6,7 @@ export default {
     return {
       visitors,
     };
-  },
-  components: {
-    HomePage,
-    LoginPage,
-    UsersPage,
-  },
-  data: () => ({
-    currentPage: "Home",
-  }),
-  computed: {
-    renderPage() {
-      return `${this.currentPage}Page`;
-    },
-  },
-  methods: {
-    showHomePage() {
-      this.currentPage = "Home";
-    },
-    showLoginPage() {
-      this.currentPage = "Login";
-    },
-    showUsersPage() {
-      this.currentPage = "Users";
-    },
-  },
+  }
 };
 </script>
 
@@ -44,14 +17,13 @@ export default {
     </span>
     <p>Visitors: {{ visitors }}</p>
     <nav class="nav">
-      <a href="#" @click.prevent="showHomePage">Home</a>
-      <a href="#" @click.prevent="showUsersPage">Users</a>
-      <a href="#" @click.prevent="showLoginPage">Login</a>
+      <router-link to="/">Home</router-link>
+      <router-link to="/users">Users</router-link>
+      <router-link to="/login">Login</router-link>
     </nav>
   </header>
   <Suspense>
-    <component :is="renderPage" />
-    <template #fallback> Fetching data... </template>
+    <router-view />
   </Suspense>
 </template>
 
