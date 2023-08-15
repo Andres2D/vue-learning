@@ -31,11 +31,11 @@ state.usersList = await fetchUsers();
     <h2>{{ title }}</h2>
     <ul>
       <li v-for="user in state.usersList" :key="`user-${user.id}`">
-        <div class="user-header">
+        <div class="$style[user-header]">
           <h3>{{ user.name }}</h3>
           <p>({{ user.username }})</p>
         </div>
-        <div class="user-body">
+        <div class="$style[user-body]">
           <p>{{ user.email }} / {{ user.phone }}</p>
         </div>
       </li>
@@ -44,14 +44,7 @@ state.usersList = await fetchUsers();
   </main>
 </template>
 
-<style>
-main {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  max-width: 320px;
-  margin: 50px auto;
-}
+<style module>
 
 ul {
   list-style: none;
