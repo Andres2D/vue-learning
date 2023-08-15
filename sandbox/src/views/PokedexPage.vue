@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 import BaseButton from '../components/BaseButton.vue';
 import { computed, ref, reactive, defineProps, defineEmits } from 'vue';
 
@@ -32,4 +32,10 @@ const changeRegionName = () => {
   <h3>{{ regionNameAllCaps }}</h3>
   <button @click="changeRegionName">Change region name</button>
   <pre>{{  pokedex  }}</pre>
-</template>
+</template> -->
+
+<script>
+</script>
+<template>
+  <h1>Pokedex page</h1>
+</template>  
