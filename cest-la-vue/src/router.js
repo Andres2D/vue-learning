@@ -1,18 +1,14 @@
-import HomePage from './views/HomePage.vue';
-import LoginPage from './views/LoginPage.vue';
-import UsersPage from './views/UsersPage.vue';
-
 export const routes = [
   {
     path: '/',
-    component: HomePage
+    component: () => import('@/views/HomePage.vue')
   },
   {
     path: '/login',
-    component: LoginPage
+    component: () => import('@/views/LoginPage.vue')
   },
   {
     path: '/users',
-    component: UsersPage
+    component: () => import('@/views/UsersPage.vue')
   }
 ];

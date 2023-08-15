@@ -24,6 +24,7 @@ export default {
   </header>
   <Suspense>
     <router-view />
+    <template #fallback> Fetching data... </template>
   </Suspense>
 </template>
 
