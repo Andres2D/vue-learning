@@ -1,5 +1,5 @@
 <script setup>
-import BaseButton from './BaseButton.vue';
+import BaseButton from '../components/BaseButton.vue';
 import { computed, ref, reactive, defineProps, defineEmits } from 'vue';
 
 const emits = defineEmits(['change-region']); 
