@@ -22,3 +22,9 @@ export default {
   <p>Food: {{user.food}}</p>
   <button @click="$emit('change-name')">Change name</button>
 </template>
+
+<style scoped>
+button {
+  border: 10px solid green;
+}
+</style>

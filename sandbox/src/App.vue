@@ -10,3 +10,13 @@ import UserCard from './components/UserCard.vue';
     :user="{name: 'Ben', food: 'sushi'}" 
   />
 </template>
+
+<style>
+html {
+  background-color: papayawhip;
+}
+
+button {
+  border: 10px solid red;
+}
+</style>
