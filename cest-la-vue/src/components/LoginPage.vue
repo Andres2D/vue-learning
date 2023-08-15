@@ -1,4 +1,6 @@
-<script></script>
+<script setup>
+import { increaseVisitors } from '../composables/useState';
+</script>
 
 <template>
   <main>
@@ -6,6 +8,7 @@
     <label for="email">Email</label>
     <input type="email" />
     <button>Continue with email</button>
+    <button @click="increaseVisitors">New visitor</button>
   </main>
 </template>
 

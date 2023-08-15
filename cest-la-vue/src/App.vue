@@ -2,8 +2,14 @@
 import HomePage from "./components/HomePage.vue";
 import LoginPage from "./components/LoginPage.vue";
 import UsersPage from "./components/UsersPage.vue";
+import { visitors } from './composables/useState';
 
 export default {
+  setup() {
+    return {
+      visitors,
+    };
+  },
   components: {
     HomePage,
     LoginPage,
@@ -36,6 +42,7 @@ export default {
     <span class="logo">
       <img src="@/assets/vue-heart.png" width="30" />C'est La Vue
     </span>
+    <p>Visitors: {{ visitors }}</p>
     <nav class="nav">
       <a href="#" @click.prevent="showHomePage">Home</a>
       <a href="#" @click.prevent="showUsersPage">Users</a>

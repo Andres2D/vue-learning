@@ -1,4 +1,6 @@
-<script></script>
+<script setup>
+import { increaseVisitors } from '../composables/useState';
+</script>
 
 <template>
   <main>
@@ -7,6 +9,7 @@
       This is a place to manage various things: todos, users, posts, etc.
       Whatever your mind desires!
     </p>
+    <button @click="increaseVisitors">New visitor</button>
   </main>
 </template>
 

@@ -1,5 +1,6 @@
 <script setup>
 import { reactive } from 'vue';
+import { increaseVisitors } from '../composables/useState';
 
 defineProps({
   title: {
@@ -39,6 +40,7 @@ state.usersList = await fetchUsers();
         </div>
       </li>
     </ul>
+    <button @click="increaseVisitors">New visitor</button>
   </main>
 </template>
 
