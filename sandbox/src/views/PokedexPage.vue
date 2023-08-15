@@ -38,4 +38,5 @@ const changeRegionName = () => {
 </script>
 <template>
   <h1>Pokedex page</h1>
+  <router-link to="/pokedex/20">Go to Pokemon #20</router-link>
 </template>  
