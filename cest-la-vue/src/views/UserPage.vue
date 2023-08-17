@@ -8,6 +8,6 @@ console.log(route);
 
 <template>
   <main>
-    <h2>User: {{ route.params.id }}</h2>
+    <h2>User: {{ route.params.name }}</h2>
   </main>
 </template>

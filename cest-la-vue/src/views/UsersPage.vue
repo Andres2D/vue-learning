@@ -27,8 +27,8 @@ const fetchUsers = async () => {
 
 state.usersList = await fetchUsers();
 
-const handleUserClick = (id) => {
-  router.push(`/users/${id}`);
+const handleUserClick = (name) => {
+  router.push(`/users/${name}`);
 };
 
 </script>
@@ -40,7 +40,7 @@ const handleUserClick = (id) => {
       <li 
         v-for="user in state.usersList" 
         :key="`user-${user.id}`"
-        @click="handleUserClick(user.id)"
+        @click="handleUserClick(user.name)"
       >
         <div class="$style[user-header]">
           <h3>{{ user.name }}</h3>
