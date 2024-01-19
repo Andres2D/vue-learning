@@ -15,14 +15,26 @@
   <body>
     <header>
       <h1>Vue Events</h1>
-    </header>
+    </header> 
     <section id="events">
       <h2>Events in Action</h2>
       <button v-on:click="add(5)">Add 5</button>
-      <button v-on:click="remove(5)">Remove 5</button>
+      
+      <!-- Using modifier to only listen the right click event -->
+      <button v-on:click.right="remove(5)">Remove 5</button>
+      
       <p>Result: {{ counter }}</p>
-      <input type="text" v-on:input="setName($event, 'a.k.a 2D')">
+      <input 
+        type="text" 
+        v-on:input="setName($event, 'a.k.a 2D')"
+        v-on:keyup.enter="confirmInput"
+      />
       <p>Your name: {{ name }}</p>
+      <p>Your confirmed name: {{ confirmedName }}</p>
+      <form v-on:submit.prevent="submitForm">
+        <input type="text">
+        <button>Sign up</button>
+      </form>
     </section>
   </body>
 </html>
