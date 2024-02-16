@@ -22,7 +22,10 @@
       
       <!-- Using modifier to only listen the right click event -->
       <button v-on:click.right="remove(5)">Remove 5</button>
-      
+
+      <!-- Preserve the original value and don't change it -->
+      <p v-once>Starting counter: {{counter}}</p>
+
       <p>Result: {{ counter }}</p>
       <input 
         type="text" 
