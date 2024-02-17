@@ -24,7 +24,14 @@ const app = Vue.createApp({
     },
     resetInput() {
       this.name = '';
+    },
+    outputFullName() {
+      console.log('In');
+      return this.name.trim() === ''
+        ? ''
+        : `${this.name} Alcaraz`;
     }
+
   }
 });
 
