@@ -3,15 +3,38 @@ const app = Vue.createApp({
     return {
       counter: 0,
       name: '',
-      confirmedName: ''
+      lastName: '',
+      confirmedName: '',
+      // fullName: ''
     };
+  },
+  watch: {
+    // (newValue?, oldValue?) is the latest value of the property we are watching
+    // name(value) {
+    //   value.trim() !== ''
+    //     ? this.fullName = `${value} ${lastName}`
+    //     : this.fullName = '';
+    // },
+    // lastName(value) {
+    //   value.trim() !== ''
+    //     ? this.fullName = `${this.name} ${value}`
+    //     : this.fullName = '';
+    // }
+    counter(value) {
+      if(value > 50) {
+        const that = this;
+        setTimeout(() => {
+          that.counter = 0;
+        }, 2000);
+      }
+    }
   },
   computed: {
     fullName() {
       console.log('In');
-      return this.name.trim() === ''
+      return this.name.trim() === '' || this.lastName.trim() === ''
         ? ''
-        : `${this.name} Alcaraz`;
+        : `${this.name} ${this.lastName}`;
     }
   },
   methods: {
