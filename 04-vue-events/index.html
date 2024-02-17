@@ -35,7 +35,9 @@
       <button v-on:click="resetInput">Reset input</button>
       
       <!-- Don't output values with methods, is bad for performance use computed properties instead -->
-      <p>Your name: {{ outputFullName() }}</p>
+      <!-- <p>Your name: {{ outputFullName() }}</p> -->
+      
+      <p>Your name: {{ fullName }}</p>
       
       <p>Your confirmed name: {{ confirmedName }}</p>
       <form v-on:submit.prevent="submitForm">
